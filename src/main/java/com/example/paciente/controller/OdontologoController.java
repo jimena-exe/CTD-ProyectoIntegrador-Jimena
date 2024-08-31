@@ -16,12 +16,14 @@ public class OdontologoController {
         this.odontologoService = odontologoService;
     }
 
+    //GUARDAR
     @PostMapping("/guardar")
     public ResponseEntity<Odontologo> agregarOdontologo(@RequestBody Odontologo odontologo){
         // aca jackson convierte el objeto JSON a un objeto Java "paciente"
         return ResponseEntity.ok(odontologoService.guardarOdontologo(odontologo));
     }
 
+    //BUSCAR
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Odontologo> buscarPorId(@PathVariable Integer id){
         Optional<Odontologo> odontologo = odontologoService.buscarPorId(id);
@@ -31,4 +33,10 @@ public class OdontologoController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    //LISTAR TODOS
+
+    //ELIMINAR
+
+    //MODIFICAR
 }
