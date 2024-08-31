@@ -12,10 +12,12 @@ public interface ITurnoService {
     TurnoResponseDto guardarTurno(TurnoRequestDto turnoRequestDto);
 
     Optional<Turno> buscarPorId(Integer id);
+
     List<TurnoResponseDto> buscarTodos();
 
     void modificarTurnos(TurnoModifyDto turnoModifyDto);
 
     void eliminarTurno(Integer id);
+
     Optional<Turno> buscarTurnosPorPaciente(String pacienteApellido);
 }

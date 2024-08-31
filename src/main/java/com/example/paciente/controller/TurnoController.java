@@ -35,6 +35,7 @@ public class TurnoController {
         turnoService.modificarTurnos(turnoModifyDto);
         return ResponseEntity.ok("{\"mensaje\": \"El turno fue modificado\"}");
     }
+
     @GetMapping("/buscarTurnoApellido/{apellido}")
     public ResponseEntity<Turno> buscarTurnoPorApellido(@PathVariable String apellido){
         Optional<Turno> turno = turnoService.buscarTurnosPorPaciente(apellido);
@@ -42,4 +43,15 @@ public class TurnoController {
     }
 
     //ELIMINAR
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String> eliminarTurno(@PathVariable Integer id){
+        Optional<Turno>  turnoEncontrado = turnoService.buscarPorId(id);
+        if(turnoEncontrado.isPresent()) {
+            turnoService.eliminarTurno(id);
+            String jsonResponse = "{\"mensaje\": \"El turno fue eliminado\"}";
+            return ResponseEntity.ok(jsonResponse);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
