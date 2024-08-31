@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-    <td th:text="${saludo}"></td> <!--Aquí usamos el atributo del paciente controller-->
+<div>
+    <h1>¡Bienvenido!</h1>
+    <h3>Odontologo:</h3>
+    <span th:text="${nombre}"></span>
+    <span th:text="${apellido}"></span>
+
+</div>
+<!--    <td th:text="${saludo}"></td> &lt;!&ndash;Aquí usamos el atributo del paciente controller&ndash;&gt;-->
 
 </body>
 </html>

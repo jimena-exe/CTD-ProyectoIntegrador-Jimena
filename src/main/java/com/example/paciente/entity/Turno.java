@@ -1,7 +1,7 @@
 package com.example.paciente.entity;
 
+import com.example.paciente.utils.GsonProvider;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import dh.backend.clinica.utils.GsonProvider;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
