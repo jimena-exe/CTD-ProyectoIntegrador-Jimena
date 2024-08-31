@@ -1,7 +1,7 @@
 package com.example.paciente.controller;
 
-import dh.backend.clinica.entity.Odontologo;
-import dh.backend.clinica.service.IOdontologoService;
+import com.example.paciente.entity.Odontologo;
+import com.example.paciente.service.IOdontologoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

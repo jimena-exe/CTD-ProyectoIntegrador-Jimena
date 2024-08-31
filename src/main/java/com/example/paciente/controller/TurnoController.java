@@ -1,10 +1,7 @@
 package com.example.paciente.controller;
 
-import dh.backend.clinica.dto.request.TurnoModifyDto;
-import dh.backend.clinica.dto.request.TurnoRequestDto;
-import dh.backend.clinica.dto.response.TurnoResponseDto;
-import dh.backend.clinica.entity.Turno;
-import dh.backend.clinica.service.ITurnoService;
+import com.example.paciente.entity.Turno;
+import com.example.paciente.service.ITurnoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

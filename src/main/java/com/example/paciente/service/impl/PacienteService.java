@@ -1,9 +1,9 @@
 package com.example.paciente.service.impl;
 
 
-import dh.backend.clinica.entity.Paciente;
-import dh.backend.clinica.repository.IPacienteRepository;
-import dh.backend.clinica.service.IPacienteService;
+import com.example.paciente.entity.Paciente;
+import com.example.paciente.repository.IPacienteRepository;
+import com.example.paciente.service.IPacienteService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

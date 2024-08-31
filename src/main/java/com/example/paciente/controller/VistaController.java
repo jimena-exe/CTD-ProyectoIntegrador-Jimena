@@ -1,7 +1,7 @@
 package com.example.paciente.controller;
 
-import dh.backend.clinica.entity.Paciente;
-import dh.backend.clinica.service.impl.PacienteService;
+import com.example.paciente.entity.Paciente;
+import com.example.paciente.service.impl.PacienteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

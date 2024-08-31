@@ -1,6 +1,6 @@
 package com.example.paciente.service;
 
-import dh.backend.clinica.entity.Odontologo;
+import com.example.paciente.entity.Odontologo;
 
 import java.util.Optional;
 

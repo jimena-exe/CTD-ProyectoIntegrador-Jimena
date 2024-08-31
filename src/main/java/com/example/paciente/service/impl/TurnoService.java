@@ -1,5 +1,9 @@
 package com.example.paciente.service.impl;
 
+import com.example.paciente.repository.ITurnoRepository;
+import com.example.paciente.service.IOdontologoService;
+import com.example.paciente.service.IPacienteService;
+import com.example.paciente.service.ITurnoService;
 import dh.backend.clinica.dto.request.TurnoModifyDto;
 import dh.backend.clinica.dto.request.TurnoRequestDto;
 import dh.backend.clinica.dto.response.OdontologoResponseDto;
