@@ -1,21 +1,17 @@
 package com.example.paciente.service.impl;
 
+import com.example.paciente.dto.request.TurnoModifyDto;
+import com.example.paciente.dto.request.TurnoRequestDto;
+import com.example.paciente.dto.response.OdontologoResponseDto;
+import com.example.paciente.dto.response.PacienteResponseDto;
+import com.example.paciente.dto.response.TurnoResponseDto;
+import com.example.paciente.entity.Odontologo;
+import com.example.paciente.entity.Paciente;
+import com.example.paciente.entity.Turno;
 import com.example.paciente.repository.ITurnoRepository;
 import com.example.paciente.service.IOdontologoService;
 import com.example.paciente.service.IPacienteService;
 import com.example.paciente.service.ITurnoService;
-import dh.backend.clinica.dto.request.TurnoModifyDto;
-import dh.backend.clinica.dto.request.TurnoRequestDto;
-import dh.backend.clinica.dto.response.OdontologoResponseDto;
-import dh.backend.clinica.dto.response.PacienteResponseDto;
-import dh.backend.clinica.dto.response.TurnoResponseDto;
-import dh.backend.clinica.entity.Odontologo;
-import dh.backend.clinica.entity.Paciente;
-import dh.backend.clinica.entity.Turno;
-import dh.backend.clinica.repository.ITurnoRepository;
-import dh.backend.clinica.service.IOdontologoService;
-import dh.backend.clinica.service.IPacienteService;
-import dh.backend.clinica.service.ITurnoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +35,7 @@ public class TurnoService implements ITurnoService {
         this.odontologoService = odontologoService;
     }
 
+    //GUARDAR
     @Override
     public TurnoResponseDto guardarTurno(TurnoRequestDto turnoRequestDto){
         Optional<Paciente> paciente = pacienteService.buscarPorId(turnoRequestDto.getPaciente_id());
@@ -64,11 +61,13 @@ public class TurnoService implements ITurnoService {
         return turnoResponseDto;
     }
 
+    //BUSCAR UNO
     @Override
     public Optional<Turno> buscarPorId(Integer id) {
         return turnoRepository.findById(id);
     }
 
+    //LISTAR TODOS
     @Override
     public List<TurnoResponseDto> buscarTodos() {
         List<Turno> turnosDesdeBD = turnoRepository.findAll();
@@ -82,6 +81,7 @@ public class TurnoService implements ITurnoService {
         return turnosRespuesta;
     }
 
+    //MODIFICAR TURNOS
     @Override
     public void modificarTurnos(TurnoModifyDto turnoModifyDto) {
         Optional<Paciente> paciente = pacienteService.buscarPorId(turnoModifyDto.getPaciente_id());
@@ -95,7 +95,7 @@ public class TurnoService implements ITurnoService {
         }
     }
 
-
+    //ELIMINAR
     @Override
     public void eliminarTurno(Integer id){
         turnoRepository.deleteById(id);
@@ -106,6 +106,7 @@ public class TurnoService implements ITurnoService {
         return turnoRepository.buscarPorApellidoPaciente(pacienteApellido);
     }
 
+    //RESPUESTAS DTO
     private TurnoResponseDto obtenerTurnoResponse(Turno turnoDesdeBD){
         OdontologoResponseDto odontologoResponseDto = new OdontologoResponseDto(
                 turnoDesdeBD.getOdontologo().getId(), turnoDesdeBD.getOdontologo().getNroMatricula(),

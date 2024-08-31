@@ -1,5 +1,8 @@
 package com.example.paciente.controller;
 
+import com.example.paciente.dto.request.TurnoModifyDto;
+import com.example.paciente.dto.request.TurnoRequestDto;
+import com.example.paciente.dto.response.TurnoResponseDto;
 import com.example.paciente.entity.Turno;
 import com.example.paciente.service.ITurnoService;
 import org.springframework.http.ResponseEntity;

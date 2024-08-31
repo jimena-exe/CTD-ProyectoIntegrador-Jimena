@@ -1,4 +1,7 @@
 package com.example.paciente.service;
+import com.example.paciente.dto.request.TurnoModifyDto;
+import com.example.paciente.dto.request.TurnoRequestDto;
+import com.example.paciente.dto.response.TurnoResponseDto;
 import com.example.paciente.entity.Turno;
 
 
