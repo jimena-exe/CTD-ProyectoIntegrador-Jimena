@@ -20,23 +20,24 @@ public class VistaOdontologoController {
         this.odontologoService = odontologoServive;
     }
 
-    /*
+
     @GetMapping("/index")
     public String bienvenidaOdontologo(Model model, @RequestParam Integer id){
         Odontologo odontologo = odontologoService.buscarPorId(id).get();
+
         model.addAttribute("nombre",odontologo.getNombre());
         model.addAttribute("apellido",odontologo.getApellido());
         return "vista/odontologo";
     }
-     */
+
 
     //prueba
-    @GetMapping("/index")
-    public String bienvenidaOdontologo(Model model){
-        model.addAttribute("nombre","Amanda");
-        model.addAttribute("apellido","Torres");
-        return "/vista/odontologo";
-    }
+//    @GetMapping("/index")
+//    public String bienvenidaOdontologo(Model model){
+//        model.addAttribute("nombre","Amanda");
+//        model.addAttribute("apellido","Torres");
+//        return "vista/odontologo";
+//    }
 
 
 }

@@ -19,7 +19,7 @@ public class Odontologo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nroMatricula;
+    private String numeroMatricula;
     private String apellido;
     private String nombre;
 
