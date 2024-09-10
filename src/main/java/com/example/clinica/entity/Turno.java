@@ -30,18 +30,8 @@ public class Turno {
     private Odontologo odontologo;
     private LocalDate fecha;
 
-//    @Override
-//    public String toString() {
-//        return GsonProvider.getGson().toJson(this);
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "Turno{" +
-//                "id=" + id +
-//                ", paciente=" + paciente +
-//                ", odontologo=" + odontologo +
-//                ", fecha=" + fecha +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return GsonProvider.getGson().toJson(this);
+    }
 }

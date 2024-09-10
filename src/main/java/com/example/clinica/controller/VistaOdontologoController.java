@@ -1,3 +1,4 @@
+/*
 package com.example.clinica.controller;
 
 import com.example.clinica.entity.Odontologo;
@@ -40,4 +41,4 @@ public class VistaOdontologoController {
 //    }
 
 
-}
+}*/

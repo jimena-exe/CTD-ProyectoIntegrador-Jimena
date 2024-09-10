@@ -35,6 +35,7 @@ public class TurnoController {
         turnoService.modificarTurnos(turnoModifyDto);
         return ResponseEntity.ok("{\"mensaje\": \"El turno fue modificado\"}");
     }
+
     @GetMapping("/buscarTurnoApellido/{apellido}")
     public ResponseEntity<TurnoResponseDto> buscarTurnoPorApellido(@PathVariable String apellido){
         Optional<TurnoResponseDto> turno = turnoService.buscarTurnosPorPaciente(apellido);

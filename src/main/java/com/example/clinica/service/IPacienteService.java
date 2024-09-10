@@ -10,11 +10,12 @@ public interface IPacienteService {
 
     Optional<Paciente> buscarPorId(Integer id);
     List<Paciente> buscarTodos();
+    List<Paciente> buscarPorApellidoyNombre(String apellido, String nombre);
+    List<Paciente> buscarPorUnaParteApellido(String parte);
 
     void modificarPaciente(Paciente paciente);
 
     void eliminarPaciente(Integer id);
 
-    List<Paciente> buscarPorApellidoyNombre(String apellido, String nombre);
-    List<Paciente> buscarPorUnaParteApellido(String parte);
+
 }

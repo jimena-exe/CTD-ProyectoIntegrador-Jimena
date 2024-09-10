@@ -1,6 +1,0 @@
-Tareas pendientes
-CRUD eliminar Turno
-Front
-Los test
-Excepciones
-Modificar banner?

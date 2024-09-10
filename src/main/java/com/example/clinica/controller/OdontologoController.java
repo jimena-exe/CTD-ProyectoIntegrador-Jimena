@@ -36,6 +36,10 @@ public class OdontologoController {
         }
     }
 
+    @GetMapping("/buscartodos")
+    public ResponseEntity<List<Odontologo>>  buscarTodos(){
+        return ResponseEntity.ok(odontologoService.buscarTodos());
+    }
 
     @PutMapping("/modificar")
     public ResponseEntity<String>  modificarOdontologo(@RequestBody Odontologo odontologo){
@@ -60,12 +64,5 @@ public class OdontologoController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
-    @GetMapping("/buscartodos")
-    public ResponseEntity<List<Odontologo>>  buscarTodos(){
-        return ResponseEntity.ok(odontologoService.buscarTodos());
-    }
-
 
 }

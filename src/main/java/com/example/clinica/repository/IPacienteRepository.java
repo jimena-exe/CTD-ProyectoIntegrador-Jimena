@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface IPacienteRepository extends JpaRepository<Paciente, Integer> {
+
     List<Paciente> findByApellidoAndNombre(String apellido, String nombre);
 
     @Query("Select p from Paciente p where LOWER(p.apellido) LIKE LOWER(CONCAT('%',:parteApellido,'%'))")

@@ -25,7 +25,7 @@ public class Odontologo {
 
     @OneToMany(mappedBy = "odontologo", cascade = CascadeType.REMOVE)
     @JsonManagedReference(value = "odontologo-turno")
-    //@JsonIgnore
+
     private Set<Turno> turnoSet;
 
     @Override

@@ -14,9 +14,10 @@ public interface ITurnoService {
 
     Optional<TurnoResponseDto> buscarPorId(Integer id);
     List<TurnoResponseDto> buscarTodos();
+    Optional<TurnoResponseDto> buscarTurnosPorPaciente(String pacienteApellido);
 
     void modificarTurnos(TurnoModifyDto turnoModifyDto);
 
     void eliminarTurno(Integer id);
-    Optional<TurnoResponseDto> buscarTurnosPorPaciente(String pacienteApellido);
+
 }

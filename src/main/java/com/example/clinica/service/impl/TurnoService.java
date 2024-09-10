@@ -27,10 +27,12 @@ import java.util.Optional;
 
 @Service
 public class TurnoService implements ITurnoService {
+
     private final Logger logger = LoggerFactory.getLogger(TurnoService.class);
     private ITurnoRepository turnoRepository;
     private IPacienteService pacienteService;
     private IOdontologoService odontologoService;
+
     @Autowired
     private ModelMapper modelMapper;
 
@@ -48,18 +50,13 @@ public class TurnoService implements ITurnoService {
             Turno turno = new Turno();
             Turno turnoDesdeBD = null;
             TurnoResponseDto turnoResponseDto = null;
-            // el armado del turno desde el turno request dto
+
             turno.setPaciente(paciente.get());
             turno.setOdontologo(odontologo.get());
             turno.setFecha(LocalDate.parse(turnoRequestDto.getFecha()));
 
-            // aca obtengo el turno persistido con el id
             turnoDesdeBD = turnoRepository.save(turno);
 
-            // armado del turno response dto desde el turno obtenido de la base de datos
-            // armado a mano
-            // turnoResponseDto = obtenerTurnoResponse(turnoDesdeBD);
-            // armado con modelmapper
             turnoResponseDto = convertirTurnoEnResponse(turnoDesdeBD);
             return turnoResponseDto;
         } catch (ResourceNotFoundException e){
@@ -108,7 +105,6 @@ public class TurnoService implements ITurnoService {
         }
     }
 
-
     @Override
     public void eliminarTurno(Integer id){
         Optional<TurnoResponseDto> turnoEncontrado = buscarPorId(id);
@@ -125,9 +121,11 @@ public class TurnoService implements ITurnoService {
         return Optional.ofNullable(turnoParaResponder);
     }
 
+    /*
+    //forma manual
     private TurnoResponseDto obtenerTurnoResponse(Turno turnoDesdeBD){
         OdontologoResponseDto odontologoResponseDto = new OdontologoResponseDto(
-                turnoDesdeBD.getOdontologo().getId(), turnoDesdeBD.getOdontologo().getNroMatricula(),
+                turnoDesdeBD.getOdontologo().getId(), turnoDesdeBD.getOdontologo().getNumeroMatricula(),
                 turnoDesdeBD.getOdontologo().getApellido(), turnoDesdeBD.getOdontologo().getNombre()
         );
         PacienteResponseDto pacienteResponseDto = new PacienteResponseDto(
@@ -140,8 +138,9 @@ public class TurnoService implements ITurnoService {
                 turnoDesdeBD.getFecha().toString()
         );
         return turnoResponseDto;
-    }
+    }*/
 
+    //model mapper
     private TurnoResponseDto convertirTurnoEnResponse(Turno turno){
         TurnoResponseDto turnoResponseDto = modelMapper.map(turno, TurnoResponseDto.class);
         turnoResponseDto.setPacienteResponseDto(modelMapper.map(turno.getPaciente(), PacienteResponseDto.class));

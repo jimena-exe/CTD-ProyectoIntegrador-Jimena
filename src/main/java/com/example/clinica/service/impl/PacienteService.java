@@ -4,6 +4,7 @@ package com.example.clinica.service.impl;
 import com.example.clinica.entity.Paciente;
 import com.example.clinica.repository.IPacienteRepository;
 import com.example.clinica.service.IPacienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

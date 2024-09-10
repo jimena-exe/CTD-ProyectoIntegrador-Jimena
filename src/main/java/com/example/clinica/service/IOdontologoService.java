@@ -9,10 +9,11 @@ import java.util.Optional;
 public interface IOdontologoService {
     Odontologo guardarOdontologo(Odontologo odontologo);
 
+    Optional<Odontologo> buscarPorId(Integer id);
     List<Odontologo> buscarTodos();
 
     void modificarOdontologo(Odontologo paciente);
 
     void eliminarOdontologo(Integer id);
-    Optional<Odontologo> buscarPorId(Integer id);
+
 }
