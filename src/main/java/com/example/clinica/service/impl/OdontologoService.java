@@ -17,6 +17,8 @@ import java.util.Optional;
 
 @Service
 public class OdontologoService implements IOdontologoService {
+    //Excepciones en guardar, buscar por id, buscar por nombre y eliminar
+
     public static final Logger logger = LoggerFactory.getLogger(OdontologoService.class);
     @Autowired
     private IOdontologoRepository odontologoRepository;
@@ -27,23 +29,22 @@ public class OdontologoService implements IOdontologoService {
         try {
             logger.info("Inicia el guardado del odontologo");
             return odontologoRepository.save(odontologo);
-        }catch(BadRequestException exception){
+        }catch(RuntimeException exception){
             logger.error("Ha ocurrido una excepcion al guardar el odontologo "+exception);
+            throw new BadRequestException("El odontologo no pudo ser guardado");
         }
-        //verificar como se debe retornar
-        return null;
     }
 
     @Override
     public Optional<Odontologo> buscarPorId(Integer id) {
         Optional<Odontologo> odontologo = null;
-        try {
+        if (odontologo.isPresent()){
             logger.info("Se inicia la busqueda del odontologo");
-            odontologo = odontologoRepository.findById(id);
-        } catch (BadRequestException exception) {
-            logger.error("Ha ocurrido una excepcion al buscar el odontologo " + exception);
+            return odontologoRepository.findById(id);
+        }else{
+            logger.error("Ha ocurrido una excepcion al buscar el odontologo ");
+            throw  new ResourceNotFoundException("El odontologo no ha sido encontrado");
         }
-        return odontologo;
     }
 
     @Override
@@ -53,8 +54,12 @@ public class OdontologoService implements IOdontologoService {
 
     @Override
     public List<Odontologo> buscarPorNombre(String nombre) {
-        return odontologoRepository.findByNombre(nombre);
-
+        Optional<Odontologo> odontologoEncontrado = null;
+        if (odontologoEncontrado.isPresent()){
+            return odontologoRepository.findByNombre(nombre);
+        }else {
+            throw new ResourceNotFoundException("El odontologo no ha sido encontrado");
+        }
     }
 
     @Override
@@ -86,7 +91,7 @@ public class OdontologoService implements IOdontologoService {
         try{
             odontologoRepository.deleteById(id);
         } catch (ResourceNotFoundException e){
-            throw new BadRequestException("Odontologo no existen en la base de datos");
+            throw new ResourceNotFoundException("Odontologo no encontrado en la base de datos");
         }
     }
 

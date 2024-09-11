@@ -14,6 +14,7 @@ import java.util.List;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiError> recursoNoEncontrado(ResourceNotFoundException e, HttpServletRequest request){
         ApiError apiError = new ApiError(
@@ -61,16 +62,18 @@ public class GlobalExceptionHandler {
 
     // Este codigo esta comentado porque si tienen errores, no les proporciona la suficiente información sobre el error
     // descomentar solo cuando este listo el backend
+/*
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiError> manejoGeneral(Exception e, HttpServletRequest request){
+        ApiError apiError = new ApiError(
+                request.getRequestURI(),
+                e.getMessage(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                ZonedDateTime.now(),
+                List.of()
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiError);
+    }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<ApiError> manejoGeneral(Exception e, HttpServletRequest request){
-//        ApiError apiError = new ApiError(
-//                request.getRequestURI(),
-//                e.getMessage(),
-//                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-//                ZonedDateTime.now(),
-//                List.of()
-//        );
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiError);
-//    }
+ */
 }

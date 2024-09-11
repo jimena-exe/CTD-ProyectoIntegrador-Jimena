@@ -9,6 +9,7 @@ import com.example.clinica.entity.Odontologo;
 import com.example.clinica.entity.Paciente;
 import com.example.clinica.entity.Turno;
 import com.example.clinica.exception.BadRequestException;
+import com.example.clinica.exception.GlobalExceptionHandler;
 import com.example.clinica.exception.ResourceNotFoundException;
 import com.example.clinica.repository.ITurnoRepository;
 import com.example.clinica.service.IOdontologoService;
@@ -27,6 +28,7 @@ import java.util.Optional;
 
 @Service
 public class TurnoService implements ITurnoService {
+    //Excepciones en guardar, buscar por id y eliminar
 
     private final Logger logger = LoggerFactory.getLogger(TurnoService.class);
     private ITurnoRepository turnoRepository;
@@ -59,7 +61,7 @@ public class TurnoService implements ITurnoService {
 
             turnoResponseDto = convertirTurnoEnResponse(turnoDesdeBD);
             return turnoResponseDto;
-        } catch (ResourceNotFoundException e){
+        } catch (RuntimeException e){
             throw new BadRequestException("Paciente u odontologo no existen en la base de datos");
         }
 
@@ -107,12 +109,13 @@ public class TurnoService implements ITurnoService {
 
     @Override
     public void eliminarTurno(Integer id){
-        try {
-            Optional<TurnoResponseDto> turnoEncontrado = buscarPorId(id);
+        Optional<TurnoResponseDto> turnoEncontrado = buscarPorId(id);
+        if (turnoEncontrado.isPresent()){
             turnoRepository.deleteById(id);
-        } catch (ResourceNotFoundException e) {
-            throw new BadRequestException("Turno no existe en la base de datos");
+        }else {
+            throw new ResourceNotFoundException("Turno no encontrado en la base de datos");
         }
+
     }
 
     @Override
@@ -126,24 +129,6 @@ public class TurnoService implements ITurnoService {
 
     }
 
-    /*
-    //forma manual
-    private TurnoResponseDto obtenerTurnoResponse(Turno turnoDesdeBD){
-        OdontologoResponseDto odontologoResponseDto = new OdontologoResponseDto(
-                turnoDesdeBD.getOdontologo().getId(), turnoDesdeBD.getOdontologo().getNumeroMatricula(),
-                turnoDesdeBD.getOdontologo().getApellido(), turnoDesdeBD.getOdontologo().getNombre()
-        );
-        PacienteResponseDto pacienteResponseDto = new PacienteResponseDto(
-                turnoDesdeBD.getPaciente().getId(), turnoDesdeBD.getPaciente().getApellido(),
-                turnoDesdeBD.getPaciente().getNombre(), turnoDesdeBD.getPaciente().getDni()
-        );
-        TurnoResponseDto turnoResponseDto = new TurnoResponseDto(
-                turnoDesdeBD.getId(),
-                pacienteResponseDto, odontologoResponseDto,
-                turnoDesdeBD.getFecha().toString()
-        );
-        return turnoResponseDto;
-    }*/
 
     //model mapper
     private TurnoResponseDto convertirTurnoEnResponse(Turno turno){
