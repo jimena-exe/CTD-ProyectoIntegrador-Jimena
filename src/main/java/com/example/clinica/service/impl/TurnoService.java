@@ -107,8 +107,12 @@ public class TurnoService implements ITurnoService {
 
     @Override
     public void eliminarTurno(Integer id){
-        Optional<TurnoResponseDto> turnoEncontrado = buscarPorId(id);
-        turnoRepository.deleteById(id);
+        try {
+            Optional<TurnoResponseDto> turnoEncontrado = buscarPorId(id);
+            turnoRepository.deleteById(id);
+        } catch (ResourceNotFoundException e) {
+            throw new BadRequestException("Turno no existe en la base de datos");
+        }
     }
 
     @Override
@@ -119,6 +123,7 @@ public class TurnoService implements ITurnoService {
             turnoParaResponder = convertirTurnoEnResponse(turno.get());
         }
         return Optional.ofNullable(turnoParaResponder);
+
     }
 
     /*
