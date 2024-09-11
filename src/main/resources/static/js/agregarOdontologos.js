@@ -5,13 +5,13 @@ form.addEventListener("submit", function (event) {
 
   const apellido = document.getElementById("apellido").value;
   const nombre = document.getElementById("nombre").value;
-  const matricula = document.getElementById("matricula").value;
+  const numeroMatricula = document.getElementById("numeroMatricula").value;
 
   // llamando al endpoint de agregar
   const datosFormulario = {
     nombre,
     apellido,
-    matricula
+    numeroMatricula,
   };
 
   fetch(`odontologo/guardar`, {
