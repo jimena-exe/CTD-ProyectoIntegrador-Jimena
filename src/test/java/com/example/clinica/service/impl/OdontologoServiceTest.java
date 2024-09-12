@@ -3,6 +3,7 @@ package com.example.clinica.service.impl;
 
 import com.example.clinica.entity.Domicilio;
 import com.example.clinica.entity.Odontologo;
+import com.example.clinica.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -58,12 +59,44 @@ class OdontologoServiceTest {
     @Test
     @DisplayName("Listar todos los odontologos")
     void caso3() {
-        //Dado
         List<Odontologo> odontologos;
-        // cuando
         odontologos = odontologoService.buscarTodos();
-        // entonces
         assertFalse(odontologos.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Modificar un odontologo correctamente")
+    void modificarOdontologoTest() {
+        odontologoDesdeDb.setNombre("NuevoNombre");
+        odontologoService.modificarOdontologo(odontologoDesdeDb);
+
+        Odontologo odontologoModificado = odontologoService.buscarPorId(odontologoDesdeDb.getId()).get();
+        assertEquals("NuevoNombre", odontologoModificado.getNombre());
+    }
+
+    @Test
+    @DisplayName("Eliminar un odontologo correctamente")
+    void eliminarOdontologoTest() {
+        Integer id = odontologoDesdeDb.getId();
+
+        odontologoService.eliminarOdontologo(id);
+
+        assertThrows(ResourceNotFoundException.class, () -> odontologoService.buscarPorId(id));
+    }
+
+    @Test
+    @DisplayName("Buscar odontologo por parte del apellido")
+    void buscarPorApellidoTest() {
+        List<Odontologo> odontologos = odontologoService.buscarPorParteApellido("Castro");
+        assertFalse(odontologos.isEmpty());
+        assertEquals("Castro", odontologos.get(0).getApellido());
+    }
+
+    @Test
+    @DisplayName("Lanzar ResourceNotFoundException cuando el odontologo no existe")
+    void buscarOdontologoNoExistenteTest() {
+        Integer idInexistente = 999;
+        assertThrows(ResourceNotFoundException.class, () -> odontologoService.buscarPorId(idInexistente));
     }
 
 }

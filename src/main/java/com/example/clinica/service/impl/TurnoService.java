@@ -9,7 +9,6 @@ import com.example.clinica.entity.Odontologo;
 import com.example.clinica.entity.Paciente;
 import com.example.clinica.entity.Turno;
 import com.example.clinica.exception.BadRequestException;
-import com.example.clinica.exception.GlobalExceptionHandler;
 import com.example.clinica.exception.ResourceNotFoundException;
 import com.example.clinica.repository.ITurnoRepository;
 import com.example.clinica.service.IOdontologoService;
@@ -34,19 +33,19 @@ public class TurnoService implements ITurnoService {
     private ITurnoRepository turnoRepository;
     private IPacienteService pacienteService;
     private IOdontologoService odontologoService;
-
-    @Autowired
     private ModelMapper modelMapper;
 
-    public TurnoService(ITurnoRepository turnoRepository, IPacienteService pacienteService, IOdontologoService odontologoService) {
+    @Autowired
+    public TurnoService(ITurnoRepository turnoRepository, IPacienteService pacienteService, IOdontologoService odontologoService, ModelMapper modelMapper) {
         this.turnoRepository = turnoRepository;
         this.pacienteService = pacienteService;
         this.odontologoService = odontologoService;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public TurnoResponseDto guardarTurno(TurnoRequestDto turnoRequestDto){
-        try{
+    public TurnoResponseDto guardarTurno(TurnoRequestDto turnoRequestDto) {
+        try {
             Optional<Paciente> paciente = pacienteService.buscarPorId(turnoRequestDto.getPaciente_id());
             Optional<Odontologo> odontologo = odontologoService.buscarPorId(turnoRequestDto.getOdontologo_id());
             Turno turno = new Turno();
