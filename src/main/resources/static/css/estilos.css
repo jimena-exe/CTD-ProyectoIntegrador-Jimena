@@ -1,40 +1,52 @@
+/* estilos.css */
+
+/* Ajusta el contenedor de bienvenida para que sea más responsive */
 #container-welcome {
-  align-items: center;
-  flex-direction: column;
   background-color: lightgrey;
-  display: flex;
   border-radius: 20px;
-  height: 400px;
-  justify-content: center;
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 10%;
-}
-.container-modal {
-  align-self: center;
-  height: 60%;
-  margin-top: 20px;
-  width: 70%;
-}
-
-h2,
-p {
-  text-align: center;
-  font-size: larger;
-}
-
-.imagen {
-  align-items: center;
   display: flex;
-
-  height: 200px;
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 10px;
-  width: 200px;
+  align-items: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 90%;
+  height: auto;
+}
+
+/* Ajusta el contenedor del texto para que ocupe un porcentaje adecuado */
+.container-modal {
+  width: 80%;
+  text-align: center;
+}
+
+/* Mejora la presentación del título y el texto */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Ajusta la imagen para que se adapte al contenedor */
+.imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 img {
-  justify-content: center;
-  height: 150px;
-  width: 150px;
+  height: auto;
+  max-width: 100%;
+  max-height: 200px;
+}
+
+/* Opcional: mejora el espaciado entre los elementos */
+.container {
+  margin: 0 auto;
+  padding: 1rem;
 }

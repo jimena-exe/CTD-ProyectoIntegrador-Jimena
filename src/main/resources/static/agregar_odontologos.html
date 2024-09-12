@@ -15,7 +15,7 @@
           crossorigin="anonymous"
   ></script>
   <link rel="stylesheet" href="css/estilos.css"/>
-  <title>Agregar Paciente</title>
+  <title>Agregar Odontólogo</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -68,9 +68,8 @@
     </div>
   </div>
 </nav>
-
 <div class="container mt-4">
-  <h1>Agregar Paciente</h1>
+  <h1>Agregar Odontólogo</h1>
   <p class="text-muted">Todos los campos son obligatorios</p>
   <form id="agregarForm">
     <div class="mb-3">
@@ -82,34 +81,14 @@
       <input type="text" class="form-control" id="nombre" required/>
     </div>
     <div class="mb-3">
-      <label for="dni" class="form-label">DNI</label>
-      <small class="form-text text-muted">Ingresar mínimo 8 caracteres, máximo 15</small>
-      <input type="text" class="form-control" id="dni" required/>
-    </div>
-    <div class="mb-3">
-      <label for="fecha" class="form-label">Fecha de Ingreso</label>
-      <input type="date" class="form-control" id="fecha" required/>
-    </div>
-    <div class="mb-3">
-      <label for="calle" class="form-label">Calle</label>
-      <input type="text" class="form-control" id="calle" required/>
-    </div>
-    <div class="mb-3">
-      <label for="numero" class="form-label">Número</label>
-      <input type="number" class="form-control" id="numero" required/>
-    </div>
-    <div class="mb-3">
-      <label for="localidad" class="form-label">Localidad</label>
-      <input type="text" class="form-control" id="localidad" required/>
-    </div>
-    <div class="mb-3">
-      <label for="provincia" class="form-label">Provincia</label>
-      <input type="text" class="form-control" id="provincia" required/>
+      <label for="numeroMatricula" class="form-label">Matrícula</label>
+      <small class="form-text text-muted">La matrícula debe ser de 10 caracteres</small>
+      <input type="text" class="form-control" id="numeroMatricula" required/>
     </div>
     <button type="submit" class="btn btn-primary">Agregar</button>
   </form>
 </div>
 
-<script src="js/agregarPacientes.js"></script>
+<script src="js/agregarOdontologos.js"></script>
 </body>
 </html>
