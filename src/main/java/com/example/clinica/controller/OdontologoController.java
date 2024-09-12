@@ -2,11 +2,9 @@ package com.example.clinica.controller;
 
 import com.example.clinica.entity.Odontologo;
 import com.example.clinica.service.IOdontologoService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import org.apache.log4j.Logger;
 import java.util.List;
 import java.util.Optional;
 
