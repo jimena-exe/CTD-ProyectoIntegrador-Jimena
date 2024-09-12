@@ -1,0 +1,40 @@
+#container-welcome {
+  align-items: center;
+  flex-direction: column;
+  background-color: lightgrey;
+  display: flex;
+  border-radius: 20px;
+  height: 400px;
+  justify-content: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10%;
+}
+.container-modal {
+  align-self: center;
+  height: 60%;
+  margin-top: 20px;
+  width: 70%;
+}
+
+h2,
+p {
+  text-align: center;
+  font-size: larger;
+}
+
+.imagen {
+  align-items: center;
+  display: flex;
+
+  height: 200px;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+img {
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+}
