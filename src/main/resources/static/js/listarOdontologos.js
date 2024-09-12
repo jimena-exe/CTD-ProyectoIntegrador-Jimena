@@ -24,9 +24,9 @@ function fetchOdontologos() {
               <td>${odontologo.id}</td>
               <td>${odontologo.apellido}</td>
               <td>${odontologo.nombre}</td>
-              <td>${odontologo.matricula}</td>
+              <td>${odontologo.numeroMatricula}</td>
               <td>
-                <button class="btn btn-primary btn-sm" onclick="editOdontologo(${odontologo.id}, '${odontologo.apellido}','${odontologo.nombre}', '${odontologo.matricula}')">Modificar</button>
+                <button class="btn btn-primary btn-sm" onclick="editOdontologo(${odontologo.id}, '${odontologo.apellido}','${odontologo.nombre}', '${odontologo.numeroMatricula}')">Modificar</button>
                 <button class="btn btn-danger btn-sm" onclick="deleteOdontologo(${odontologo.id})">Eliminar</button>
               </td>
             `;
@@ -58,7 +58,8 @@ editForm.addEventListener("submit", function (event) {
   event.preventDefault();
   const apellido = document.getElementById("editApellido").value;
   const nombre = document.getElementById("editNombre").value;
-  const matricula = document.getElementById("editMatricula").value;
+  const numeroMatricula = document.getElementById("editMatricula").value;
+//  console.log("Apellido " + apellido + "nombre " + nombre + "nroMatricula " + numeroMatricula);
 
   //modificar un odontologo
   fetch(`odontologo/modificar`, {
@@ -70,7 +71,7 @@ editForm.addEventListener("submit", function (event) {
       id: currentOdontologoId,
       nombre,
       apellido,
-      matricula,
+      numeroMatricula,
     }),
   })
     .then((response) => response.json())

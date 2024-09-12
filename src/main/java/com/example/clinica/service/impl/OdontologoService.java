@@ -37,7 +37,7 @@ public class OdontologoService implements IOdontologoService {
 
     @Override
     public Optional<Odontologo> buscarPorId(Integer id) {
-        Optional<Odontologo> odontologo = null;
+        Optional<Odontologo> odontologo = odontologoRepository.findById(id);
         if (odontologo.isPresent()){
             logger.info("Se inicia la busqueda del odontologo");
             return odontologoRepository.findById(id);
@@ -74,16 +74,14 @@ public class OdontologoService implements IOdontologoService {
 
     @Override
     public void modificarOdontologo(Odontologo odontologo) {
-
-        try {
+        Optional<Odontologo> odontologoEncontrado = buscarPorId(odontologo.getId());
+        if (odontologoEncontrado.isPresent()) {
             logger.info("Se inicia la modificacion del odontologo");
             odontologoRepository.save(odontologo);
-        }catch(Exception exception){
-            logger.error("Ha ocurrido una excepcion al modificar el odontologo "+exception);
-
+        }else {
+            logger.error("Ha ocurrido una excepcion al modificar el odontologo ");
+            throw new BadRequestException("El odontologo no pudo ser modificado");
         }
-
-
     }
 
     @Override

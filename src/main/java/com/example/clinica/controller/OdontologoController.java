@@ -59,14 +59,10 @@ public class OdontologoController {
 
     @PutMapping("/modificar")
     public ResponseEntity<String> modificarOdontologo(@RequestBody Odontologo odontologo) {
-        Optional<Odontologo> odontologoEncontrado = odontologoService.buscarPorId(odontologo.getId());
-        if (odontologoEncontrado.isPresent()) {
             odontologoService.modificarOdontologo(odontologo);
             String jsonResponse = "{\"mensaje\": \"El odontologo fue modificado\"}";
             return ResponseEntity.ok(jsonResponse);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+
     }
 
     @DeleteMapping("/eliminar/{id}")
