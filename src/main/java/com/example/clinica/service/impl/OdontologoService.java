@@ -31,7 +31,7 @@ public class OdontologoService implements IOdontologoService {
             return odontologoRepository.save(odontologo);
         }catch(RuntimeException exception){
             logger.error("Ha ocurrido una excepcion al guardar el odontologo "+exception);
-            throw new BadRequestException("El odontologo no pudo ser guardado");
+            throw new BadRequestException("El odontologo no pudo ser guardado "+ exception);
         }
     }
 

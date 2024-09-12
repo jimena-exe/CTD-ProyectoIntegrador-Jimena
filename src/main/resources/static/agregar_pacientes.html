@@ -61,10 +61,38 @@
             </li>
           </ul>
         </div>
+        <div class="collapse navbar-collapse" id="navbarNavDropdownOdontologo">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+              >
+                Gestión de Odontólogos
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="listar_odontologos.html"
+                  >Listar Odontólogos</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="agregar_odontologo.html"
+                  >Agregar Odontólogos</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container">
       <h1 class="mt-5">Agregar Paciente</h1>
+      <a>Todos los campos son obligatorios</a>
       <form id="agregarForm">
         <div class="mb-3">
           <label for="apellido" class="form-label">Apellido</label>
@@ -76,6 +104,8 @@
         </div>
         <div class="mb-3">
           <label for="dni" class="form-label">DNI</label>
+          <br>
+          <a>Ingresar mínimo 8 carácteres, máximo 15</a>
           <input type="text" class="form-control" id="dni" required />
         </div>
         <div class="mb-3">
