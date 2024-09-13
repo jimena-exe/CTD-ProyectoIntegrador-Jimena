@@ -2,21 +2,23 @@
 
 /* Ajusta el contenedor de bienvenida para que sea más responsive */
 #container-welcome {
+  align-items: center;
   background-color: lightgrey;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 90%;
   height: auto;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 60%;
+  padding: 2rem;
 }
 
 /* Ajusta el contenedor del texto para que ocupe un porcentaje adecuado */
-.container-modal {
-  width: 80%;
+.row {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
@@ -25,7 +27,6 @@ h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
 p {
   font-size: 1rem;
   line-height: 1.5;
